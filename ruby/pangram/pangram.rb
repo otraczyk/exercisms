@@ -1,7 +1,9 @@
+require 'set'
+
 module Pangram
     module_function
     def pangram?(sentence)
-        ('a'..'z').all? { |l| sentence[l]  || sentence[l.upcase] }
+        (Set.new('a'..'z') - sentence.downcase.chars).empty?
     end
 end
 
